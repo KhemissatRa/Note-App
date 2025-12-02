@@ -15,7 +15,8 @@ connectDB();
 const ProductRoutes = require('./route/product');
 app.use('/api', ProductRoutes); // Prefix all product routes with /api
 
-// Start server
+// Start server ✅
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
+
