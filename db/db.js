@@ -1,12 +1,17 @@
+// db/db.js
 const mongoose = require("mongoose");
-const express = require('express')
-const dbURI =  process.env.MONGO_URL// Replace with your MongoDB connection string
 
-const ConnectDB = async ()=>{
-try{
-    await mongoose.connect(dbURI)
-    console.log("MongoDB connected")
-}catch(error){
-    console.log(error)
-}}
-module.exports = ConnectDB
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB Connected via Mongoose");
+  } catch (err) {
+    console.error("❌ MongoDB connection failed:", err.message);
+    process.exit(1);
+  }
+}
+
+module.exports = connectDB;
